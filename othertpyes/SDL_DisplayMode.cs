@@ -1,5 +1,6 @@
 namespace DeafMan1983.Interop.SDL3;
 
+using System;
 using static DeafMan1983.Interop.SDL3.SDL3;
 
 public unsafe partial struct SDL_DisplayMode

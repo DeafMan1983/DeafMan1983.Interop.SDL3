@@ -3431,5 +3431,29 @@ public unsafe static partial class SDL3
     public static SDL_FlashOperation SDL_FLASH_CANCEL,
         SDL_FLASH_BRIEFLY, 
         SDL_FLASH_UNTIL_FOCUSED;
+    public const int SDL_WINDOWPOS_UNDEFINED_MASK = (int)(uint)0x1FFF0000u,
+                     SDL_WINDOWPOS_CENTERED_MASK = (int)(uint)0x2FFF0000u;
 
+    public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(int x)
+    {
+        return (SDL_WINDOWPOS_UNDEFINED_MASK | x);
+    }
+
+    public static int SDL_WINDOWPOS_CENTERED_DISPLAY(int x)
+    {
+        return (SDL_WINDOWPOS_CENTERED_MASK | x);
+    }
+
+    public static int SDL_WINDOWPOS_UNDEFINED = SDL_WINDOWPOS_UNDEFINED_DISPLAY(0);
+    public static int SDL_WINDOWPOS_CENTERED = SDL_WINDOWPOS_CENTERED_DISPLAY(0);
+
+    public static bool SDL_WINDOWPOS_ISUNDEFINED(int x)
+    {
+        return (((x)&0xFFFF0000) == SDL_WINDOWPOS_UNDEFINED_MASK);
+    }
+
+    public static bool SDL_WINDOWPOS_ISCENTERED(int x)
+    {
+        return (((x)&0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
+    }
 }
