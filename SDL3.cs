@@ -1749,6 +1749,108 @@ public unsafe static partial class SDL3
     [DllImport(libSDL3)]
     public static extern SDL_YUV_CONVERSION_MODE SDL_GetYUVConversionModeForResolution(int width, int height);
 
+    // SDL_system.h
+    [DllImport(libSDL3)]
+    public static extern int SDL_LinuxSetThreadPriority([NativeTypeName("Sint64")] nint threadID, int priority);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_LinuxSetThreadPriorityAndPolicy([NativeTypeName("Sint64")] nint threadID, int sdlPriority, int schedPolicy);
+
+    [DllImport(libSDL3)]
+    public static extern SDL_bool SDL_IsTablet();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationWillTerminate();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationDidReceiveMemoryWarning();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationWillResignActive();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationDidEnterBackground();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationWillEnterForeground();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_OnApplicationDidBecomeActive();
+
+    // SDL_syswm.h
+    [DllImport(libSDL3)]
+    public static extern int SDL_GetWindowWMInfo(SDL_Window* window, SDL_SysWMinfo* info, [NativeTypeName("Uint32")] uint version);
+
+    // SDL_thread.h
+    [DllImport(libSDL3)]
+    public static extern SDL_Thread* SDL_CreateThread([NativeTypeName("SDL_ThreadFunction")] delegate* unmanaged[Cdecl]<void*, int> fn, [NativeTypeName("const char *")] sbyte* name, void* data);
+
+    [DllImport(libSDL3)]
+    public static extern SDL_Thread* SDL_CreateThreadWithStackSize([NativeTypeName("SDL_ThreadFunction")] delegate* unmanaged[Cdecl]<void*, int> fn, [NativeTypeName("const char *")] sbyte* name, [NativeTypeName("const size_t")] nuint stacksize, void* data);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetThreadName(SDL_Thread* thread);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("SDL_threadID")]
+    public static extern SDL_threadID SDL_ThreadID();
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("SDL_threadID")]
+    public static extern SDL_threadID SDL_GetThreadID(SDL_Thread* thread);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_SetThreadPriority(SDL_ThreadPriority priority);
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_WaitThread(SDL_Thread* thread, int* status);
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_DetachThread(SDL_Thread* thread);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("SDL_TLSID")]
+    public static extern SDL_TLSID SDL_TLSCreate();
+
+    [DllImport(libSDL3)]
+    public static extern void* SDL_TLSGet([NativeTypeName("SDL_TLSID")] SDL_TLSID id);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_TLSSet([NativeTypeName("SDL_TLSID")] SDL_TLSID id, [NativeTypeName("const void *")] void* value, [NativeTypeName("void (*)(void *)")] delegate* unmanaged[Cdecl]<void*, void> destructor);
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_TLSCleanup();
+
+    // SDL_timer.h
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("Uint64")]
+    public static extern nuint SDL_GetTicks();
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("Uint64")]
+    public static extern nuint SDL_GetTicksNS();
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("Uint64")]
+    public static extern nuint SDL_GetPerformanceCounter();
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("Uint64")]
+    public static extern nuint SDL_GetPerformanceFrequency();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_Delay([NativeTypeName("Uint32")] uint ms);
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_DelayNS([NativeTypeName("Uint64")] nuint ns);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("SDL_TimerID")]
+    public static extern SDL_TimerID SDL_AddTimer([NativeTypeName("Uint32")] uint interval, [NativeTypeName("SDL_TimerCallback")] delegate* unmanaged[Cdecl]<uint, void*, uint> callback, void* param2);
+
+    [DllImport(libSDL3)]
+    public static extern SDL_bool SDL_RemoveTimer([NativeTypeName("SDL_TimerID")] SDL_TimerID id);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetNumTouchDevices(); // WARNING It is for for statement
@@ -1756,30 +1858,13 @@ public unsafe static partial class SDL3
     [DllImport(libSDL3)]
     public static extern SDL_TouchID SDL_GetTouchDevice(int index);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // SDL_version.h
+    [DllImport(libSDL3)]
+    public static extern int SDL_GetVersion(SDL_version* ver);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetVersion(SDL_Version *vers);
-
-    [DllImport(libSDL3)]
-    public static extern sbyte *SDL_GetRevision();
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetRevision();
 
     [DllImport(libSDL3)]
     public static extern bool SDL_GetNumVideoDrivers();
@@ -2008,6 +2093,23 @@ public unsafe static partial class SDL3
     // OpenGL Functions - End
 
 
+    [DllImport(libSDL3)]
+    public static extern int SDL_Vulkan_LoadLibrary([NativeTypeName("const char *")] sbyte* path);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("SDL_FunctionPointer")]
+    public static extern delegate* unmanaged[Cdecl]<void *> SDL_Vulkan_GetVkGetInstanceProcAddr();
+
+    [DllImport(libSDL3)]
+    public static extern void SDL_Vulkan_UnloadLibrary();
+
+    [DllImport(libSDL3)]
+    public static extern SDL_bool SDL_Vulkan_GetInstanceExtensions([NativeTypeName("unsigned int *")] uint* pCount, [NativeTypeName("const char **")] sbyte** pNames);
+
+    [DllImport(libSDL3)]
+    public static extern SDL_bool SDL_Vulkan_CreateSurface(SDL_Window* window, [NativeTypeName("VkInstance")] void* instance, [NativeTypeName("VkSurfaceKHR *")] void* surface);
+
+
     /**
         Macro functions
     **/
@@ -2070,7 +2172,7 @@ public unsafe static partial class SDL3
         return SDL_RectsEqualEpsilon(a, b, 1.1920928955078125e-07F);
     }
 
-    public static SDL_Version *SDL_VERSION(SDL_Version *v)
+    public static SDL_version *SDL_VERSION(SDL_version *v)
     {
         v->major = SDL_MAJOR_VERSION;
         v->minor = SDL_MINOR_VERSION;
@@ -3198,7 +3300,35 @@ public unsafe static partial class SDL3
     public static SDL_YUV_CONVERSION_MODE SDL_YUV_CONVERSION_JPEG,
         SDL_YUV_CONVERSION_BT601,
         SDL_YUV_CONVERSION_BT709,
-        SDL_YUV_CONVERSION_AUTOMATIC;    
+        SDL_YUV_CONVERSION_AUTOMATIC;   
+
+    [NativeTypeName("unsigned int")]
+    public enum SDL_SYSWM_TYPE : uint
+    {
+    }
+
+    public static SDL_SYSWM_TYPE SDL_SYSWM_UNKNOWN,
+        SDL_SYSWM_ANDROID,
+        SDL_SYSWM_COCOA,
+        SDL_SYSWM_HAIKU,
+        SDL_SYSWM_KMSDRM,
+        SDL_SYSWM_RISCOS,
+        SDL_SYSWM_UIKIT,
+        SDL_SYSWM_VIVANTE,
+        SDL_SYSWM_WAYLAND,
+        SDL_SYSWM_WINDOWS,
+        SDL_SYSWM_WINRT,
+        SDL_SYSWM_X11; 
+
+    [NativeTypeName("unsigned int")]
+    public enum SDL_ThreadPriority : uint
+    {
+    }
+
+    public static SDL_ThreadPriority SDL_THREAD_PRIORITY_LOW,
+        SDL_THREAD_PRIORITY_NORMAL,
+        SDL_THREAD_PRIORITY_HIGH,
+        SDL_THREAD_PRIORITY_TIME_CRITICAL;
     
     public enum SDL_bool : int {}
     public const SDL_bool SDL_FALSE = (SDL_bool)0,
@@ -3210,6 +3340,10 @@ public unsafe static partial class SDL3
 
     public enum SDL_DisplayID : UInt32 {}
     public enum SDL_WindowID : UInt32 {}
+    public enum SDL_threadID : UInt64 {}
+    public enum SDL_TLSID : UInt32 {}
+
+    public enum SDL_TimerID : int {}
 
     public const UInt32 SDL_INIT_TIMER        = 0x00000001,
                         SDL_INIT_AUDIO        = 0x00000010,
