@@ -1,6 +1,10 @@
 # DeafMan1983.Interop.SDL3
 SDL3 for C#
 
+# Changes and Fixes:
+* Updated all structures with fake instance like TerraFX.Interop.Xlib's structures
+* Changed uint to DisplayID and WindowID
+
 Hello everyone I have made SDL3 for C# and you can use Nuget or here to download.
 
 SDL3 from [SDL3](https://github.com/libsdl-org/SDL)
