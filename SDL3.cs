@@ -1866,222 +1866,253 @@ public unsafe static partial class SDL3
     [return: NativeTypeName("const char *")]
     public static extern sbyte* SDL_GetRevision();
 
+    // SDL_video.h
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetNumVideoDrivers();
+    public static extern int SDL_GetNumVideoDrivers();
 
     [DllImport(libSDL3)]
-    public static extern sbyte *SDL_GetVideoDriver(int index);
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetVideoDriver(int index);
 
     [DllImport(libSDL3)]
-    public static extern sbyte *SDL_GetCurrentVideoDriver();
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetCurrentVideoDriver();
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayID *SDL_GetDisplays(int *count);
+    public static extern SDL_SystemTheme SDL_GetSystemTheme();
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayID SDL_GetPrimaryDisplay();
+    [return: NativeTypeName("SDL_DisplayID *")]
+    public static extern uint* SDL_GetDisplays(int* count);
 
     [DllImport(libSDL3)]
-    public static extern sbyte *SDL_GetDisplayName(SDL_DisplayID displayID); 
+    [return: NativeTypeName("SDL_DisplayID")]
+    public static extern uint SDL_GetPrimaryDisplay();
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetDisplayBounds(SDL_DisplayID displayID, SDL_Rect *rect);
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetDisplayName([NativeTypeName("SDL_DisplayID")] uint displayID);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetDisplayUsableBounds(SDL_DisplayID displayID, SDL_Rect *rect);
+    public static extern int SDL_GetDisplayBounds([NativeTypeName("SDL_DisplayID")] uint displayID, SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayOrientation SDL_GetDisplayOrientation(SDL_DisplayID displayID);
+    public static extern int SDL_GetDisplayUsableBounds([NativeTypeName("SDL_DisplayID")] uint displayID, SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayMode **SDL_GetFullscreenDisplayModes(SDL_DisplayID displayID, int *count);
+    public static extern SDL_DisplayOrientation SDL_GetDisplayOrientation([NativeTypeName("SDL_DisplayID")] uint displayID);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayMode *SDL_GetClosestFullscreenDisplayMode(SDL_DisplayID displayID, int w, int h, float refresh_rate);
+    [return: NativeTypeName("const SDL_DisplayMode **")]
+    public static extern SDL_DisplayMode** SDL_GetFullscreenDisplayModes([NativeTypeName("SDL_DisplayID")] uint displayID, int* count);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayMode *SDL_GetDesktopDisplayMode(SDL_DisplayID displayID);
+    [return: NativeTypeName("const SDL_DisplayMode *")]
+    public static extern SDL_DisplayMode* SDL_GetClosestFullscreenDisplayMode([NativeTypeName("SDL_DisplayID")] uint displayID, int w, int h, float refresh_rate);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayMode *SDL_GetCurrentDisplayMode(SDL_DisplayID displayID);
+    [return: NativeTypeName("const SDL_DisplayMode *")]
+    public static extern SDL_DisplayMode* SDL_GetDesktopDisplayMode([NativeTypeName("SDL_DisplayID")] uint displayID);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayID SDL_GetDisplayForPoint(SDL_Point *point);
+    [return: NativeTypeName("const SDL_DisplayMode *")]
+    public static extern SDL_DisplayMode* SDL_GetCurrentDisplayMode([NativeTypeName("SDL_DisplayID")] uint displayID);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayID SDL_GetDisplayForRect(SDL_Rect *rect);
+    [return: NativeTypeName("SDL_DisplayID")]
+    public static extern uint SDL_GetDisplayForPoint([NativeTypeName("const SDL_Point *")] SDL_Point* point);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayID SDL_GetDisplayForWindow(SDL_Window *window);
+    [return: NativeTypeName("SDL_DisplayID")]
+    public static extern uint SDL_GetDisplayForRect([NativeTypeName("const SDL_Rect *")] SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowFullscreenMode(SDL_Window *window, SDL_DisplayMode *mode);
+    [return: NativeTypeName("SDL_DisplayID")]
+    public static extern uint SDL_GetDisplayForWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_DisplayMode *SDL_GetWindowFullscreenMode(SDL_Window *window);
+    public static extern int SDL_SetWindowFullscreenMode(SDL_Window* window, [NativeTypeName("const SDL_DisplayMode *")] SDL_DisplayMode* mode);
 
-    // size_t in C# "nuint *"
     [DllImport(libSDL3)]
-    public static extern void *SDL_GetWindowICCProfile(SDL_Window *window, nuint *size);
+    [return: NativeTypeName("const SDL_DisplayMode *")]
+    public static extern SDL_DisplayMode* SDL_GetWindowFullscreenMode(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern UInt32 SDL_GetWindowPixelFormat(SDL_Window *window);
+    public static extern void* SDL_GetWindowICCProfile(SDL_Window* window, [NativeTypeName("size_t *")] nuint* size);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Window *SDL_CreateWindow(sbyte *title, int x, int y, int w, int h, SDL_WindowFlags flags);
+    [return: NativeTypeName("Uint32")]
+    public static extern uint SDL_GetWindowPixelFormat(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Window *SDL_CreateWindowFrom(void *data);
+    public static extern SDL_Window* SDL_CreateWindow([NativeTypeName("const char *")] sbyte* title, int w, int h, [NativeTypeName("Uint32")] uint flags);
 
     [DllImport(libSDL3)]
-    public static extern SDL_WindowID SDL_GetWindowID(SDL_Window *window);
+    public static extern SDL_Window* SDL_CreateWindowWithPosition([NativeTypeName("const char *")] sbyte* title, int x, int y, int w, int h, [NativeTypeName("Uint32")] uint flags);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Window *SDL_GetWindowFromID(SDL_WindowID id);
+    public static extern SDL_Window* SDL_CreatePopupWindow(SDL_Window* parent, int offset_x, int offset_y, int w, int h, [NativeTypeName("Uint32")] uint flags);
 
     [DllImport(libSDL3)]
-    public static extern UInt32 SDL_GetWindowFlags(SDL_Window *window);
+    public static extern SDL_Window* SDL_CreateWindowFrom([NativeTypeName("const void *")] void* data);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowTitle(SDL_Window *window, sbyte *title);
+    [return: NativeTypeName("SDL_WindowID")]
+    public static extern SDL_WindowID SDL_GetWindowID(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern sbyte *SDL_GetWindowTitle(SDL_Window *window);
+    public static extern SDL_Window* SDL_GetWindowFromID([NativeTypeName("SDL_WindowID")] SDL_WindowID id);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowIcon(SDL_Window *window, SDL_Surface *icon);
+    public static extern SDL_Window* SDL_GetWindowParent(SDL_Window* window);
 
-    [DllImport(libSDL3)]    
-    public static extern void *SDL_SetWindowData(SDL_Window *window, sbyte *name, void *user_data);
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("Uint32")]
+    public static extern uint SDL_GetWindowFlags(SDL_Window* window);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_SetWindowTitle(SDL_Window* window, [NativeTypeName("const char *")] sbyte* title);
+
+    [DllImport(libSDL3)]
+    [return: NativeTypeName("const char *")]
+    public static extern sbyte* SDL_GetWindowTitle(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern void *SDL_GetWindowData(SDL_Window *window, sbyte *name);
+    public static extern int SDL_SetWindowIcon(SDL_Window* window, SDL_Surface* icon);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowPosition(SDL_Window *window, int x, int y);
+    public static extern void* SDL_SetWindowData(SDL_Window* window, [NativeTypeName("const char *")] sbyte* name, void* userdata);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowPosition(SDL_Window *window, int *x, int *y);
+    public static extern void* SDL_GetWindowData(SDL_Window* window, [NativeTypeName("const char *")] sbyte* name);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowSize(SDL_Window *window, int w, int h);
-    
+    public static extern int SDL_SetWindowPosition(SDL_Window* window, int x, int y);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_GetWindowPosition(SDL_Window* window, int* x, int* y);
+
+    [DllImport(libSDL3)]
+    public static extern int SDL_SetWindowSize(SDL_Window* window, int w, int h);
+
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowSize(SDL_Window *window, int *w, int *h);
+    public static extern int SDL_GetWindowSize(SDL_Window* window, int* w, int* h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowBordersSize(SDL_Window *window, int *top, int *left, int *bottom, int *right);
+    public static extern int SDL_GetWindowBordersSize(SDL_Window* window, int* top, int* left, int* bottom, int* right);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowSizeInPixels(SDL_Window *window, int *w, int *h);
+    public static extern int SDL_GetWindowSizeInPixels(SDL_Window* window, int* w, int* h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowMinimumSize(SDL_Window *window, int min_w, int min_h);
+    public static extern int SDL_SetWindowMinimumSize(SDL_Window* window, int min_w, int min_h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowMinimumSize(SDL_Window *window, int *w, int *h);
+    public static extern int SDL_GetWindowMinimumSize(SDL_Window* window, int* w, int* h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowMaximumSize(SDL_Window *window, int max_w, int max_h);
+    public static extern int SDL_SetWindowMaximumSize(SDL_Window* window, int max_w, int max_h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowMaximumSize(SDL_Window *window, int *w, int *h);
+    public static extern int SDL_GetWindowMaximumSize(SDL_Window* window, int* w, int* h);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowBordered(SDL_Window *window, SDL_bool bordered);
+    public static extern int SDL_SetWindowBordered(SDL_Window* window, SDL_bool bordered);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowResizable(SDL_Window *window, SDL_bool resizable);
+    public static extern int SDL_SetWindowResizable(SDL_Window* window, SDL_bool resizable);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowAlwaysOnTop(SDL_Window *window, SDL_bool on_top);
+    public static extern int SDL_SetWindowAlwaysOnTop(SDL_Window* window, SDL_bool on_top);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_ShowWindow(SDL_Window *window);
+    public static extern int SDL_ShowWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_HideWindow(SDL_Window *window);
+    public static extern int SDL_HideWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_RaiseWindow(SDL_Window *window);
+    public static extern int SDL_RaiseWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_MaximizeWindow(SDL_Window *window);
+    public static extern int SDL_MaximizeWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_MinimizeWindow(SDL_Window *window);
+    public static extern int SDL_MinimizeWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_RestoreWindow(SDL_Window *window);
+    public static extern int SDL_RestoreWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowFullscreen(SDL_Window *window, SDL_bool fullscreen);
+    public static extern int SDL_SetWindowFullscreen(SDL_Window* window, SDL_bool fullscreen);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Surface *SDL_GetWindowSurface(SDL_Window *window);
+    public static extern SDL_Surface* SDL_GetWindowSurface(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_UpdateWindowSurface(SDL_Window *window);
+    public static extern int SDL_UpdateWindowSurface(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_UpdateWindowSurfaceRects(SDL_Window *window, SDL_Rect *rects, int numrects);
+    public static extern int SDL_UpdateWindowSurfaceRects(SDL_Window* window, [NativeTypeName("const SDL_Rect *")] SDL_Rect* rects, int numrects);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowGrab(SDL_Window *window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowGrab(SDL_Window* window, SDL_bool grabbed);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowKeyboardGrab(SDL_Window *window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowKeyboardGrab(SDL_Window* window, SDL_bool grabbed);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowMouseGrab(SDL_Window *window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowMouseGrab(SDL_Window* window, SDL_bool grabbed);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowGrab(SDL_Window *window); 
+    public static extern SDL_bool SDL_GetWindowGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowKeyboardGrab(SDL_Window *window);
+    public static extern SDL_bool SDL_GetWindowKeyboardGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowMouseGrab(SDL_Window *window);
+    public static extern SDL_bool SDL_GetWindowMouseGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Window *SDL_GetGrabbedWindow();
+    public static extern SDL_Window* SDL_GetGrabbedWindow();
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowMouseRect(SDL_Window *window, SDL_Rect *rect);
+    public static extern int SDL_SetWindowMouseRect(SDL_Window* window, [NativeTypeName("const SDL_Rect *")] SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern SDL_Rect *SDL_GetWindowMouseRect(SDL_Window *window); 
+    [return: NativeTypeName("const SDL_Rect *")]
+    public static extern SDL_Rect* SDL_GetWindowMouseRect(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowOpacity(SDL_Window *window, float opacity);
+    public static extern int SDL_SetWindowOpacity(SDL_Window* window, float opacity);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_GetWindowOpacity(SDL_Window *window, float *out_opacity);
+    public static extern int SDL_GetWindowOpacity(SDL_Window* window, float* out_opacity);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowModalFor(SDL_Window *modal_window, SDL_Window *parent_window);
+    public static extern int SDL_SetWindowModalFor(SDL_Window* modal_window, SDL_Window* parent_window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowInputFocus(SDL_Window *window);
+    public static extern int SDL_SetWindowInputFocus(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_SetWindowHitTest(SDL_Window *window, delegate* unmanaged<SDL_Window *, SDL_Point *, void *, SDL_HitTestResult> callback, void *callback_data);
+    public static extern int SDL_SetWindowHitTest(SDL_Window* window, [NativeTypeName("SDL_HitTest")] delegate* unmanaged[Cdecl]<SDL_Window*, SDL_Point*, void*, SDL_HitTestResult> callback, void* callback_data);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_FlashWindow(SDL_Window *window, SDL_FlashOperation operation);
+    public static extern int SDL_FlashWindow(SDL_Window* window, SDL_FlashOperation operation);
 
     [DllImport(libSDL3)]
-    public static extern void SDL_DestroyWindow(SDL_Window *window);
+    public static extern void SDL_DestroyWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
     public static extern SDL_bool SDL_ScreenSaverEnabled();
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_EnableScreenSaver();
+    public static extern int SDL_EnableScreenSaver();
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_DisableScreenSaver();
+    public static extern int SDL_DisableScreenSaver();
+    
 
     // OpenGL Functions - BEGIN
 
@@ -3412,7 +3443,8 @@ public unsafe static partial class SDL3
         SDL_WINDOW_POPUP_MENU           = (SDL_WindowFlags)0x00080000,   /**< window should be treated as a popup menu */
         SDL_WINDOW_KEYBOARD_GRABBED     = (SDL_WindowFlags)0x00100000,   /**< window has grabbed keyboard input */
         SDL_WINDOW_VULKAN               = (SDL_WindowFlags)0x10000000,   /**< window usable for Vulkan surface */
-        SDL_WINDOW_METAL                = (SDL_WindowFlags)0x20000000;    /**< window usable for Metal view */
+        SDL_WINDOW_METAL                = (SDL_WindowFlags)0x20000000,    /**< window usable for Metal view */
+        SDL_WINDOW_TRANSPARENT          = (SDL_WindowFlags)0x40000000; 
 
     public enum SDL_DisplayOrientation
     {
