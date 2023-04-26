@@ -3465,6 +3465,15 @@ public unsafe static partial class SDL3
         SDL_FLASH_UNTIL_FOCUSED;
     public const int SDL_WINDOWPOS_UNDEFINED_MASK = (int)(uint)0x1FFF0000u,
                      SDL_WINDOWPOS_CENTERED_MASK = (int)(uint)0x2FFF0000u;
+                     
+    [NativeTypeName("unsigned int")]
+    public enum SDL_SystemTheme : uint
+    {
+    }
+
+    public static SDL_SystemTheme SDL_SYSTEM_THEME_UNKNOWN,
+        SDL_SYSTEM_THEME_LIGHT,
+        SDL_SYSTEM_THEME_DARK;
 
     public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(int x)
     {
