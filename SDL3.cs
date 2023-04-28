@@ -271,16 +271,16 @@ public unsafe static partial class SDL3
     public static extern void SDL_FlushEvents([NativeTypeName("Uint32")] uint minType, [NativeTypeName("Uint32")] uint maxType);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_PollEvent(SDL_Event* @event);
+    public static extern int SDL_PollEvent(SDL_Event* @event);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_WaitEvent(SDL_Event* @event);
+    public static extern int SDL_WaitEvent(SDL_Event* @event);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_WaitEventTimeout(SDL_Event* @event, [NativeTypeName("Sint32")] int timeoutMS);
+    public static extern int SDL_WaitEventTimeout(SDL_Event* @event, [NativeTypeName("Sint32")] int timeoutMS);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_PushEvent(SDL_Event* @event);
+    public static extern int SDL_PushEvent(SDL_Event* @event);
 
     [DllImport(libSDL3)]
     public static extern void SDL_SetEventFilter([NativeTypeName("SDL_EventFilter")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int> filter, void* userdata);
@@ -715,10 +715,10 @@ public unsafe static partial class SDL3
     public static extern void SDL_ClearHints();
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_Init(UInt32 flags);
+    public static extern int SDL_Init(UInt32 flags);
 
     [DllImport(libSDL3)]
-    public static extern bool SDL_InitSubSystem(UInt32 flags);
+    public static extern int SDL_InitSubSystem(UInt32 flags);
 
     [DllImport(libSDL3)]
     public static extern UInt32 SDL_WasInit(UInt32 flags);
@@ -3498,4 +3498,12 @@ public unsafe static partial class SDL3
     {
         return (((x)&0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
     }
+
+    // SDL_hints.h
+    public const string SDL_HINT_ACCELEROMETER_AS_JOYSTICK = "SDL_ACCELEROMETER_AS_JOYSTICK",
+                        SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED = "SDL_ALLOW_ALT_TAB_WHILE_GRABBED",
+
+                        
+                        
+                        SDL_HINT_RENDER_DRIVER = "SDL_RENDER_DRIVER";
 }
