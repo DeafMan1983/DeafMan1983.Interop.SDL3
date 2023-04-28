@@ -2,6 +2,9 @@
 SDL3 for C#
 
 # Changes and Fixes:
+* Fixed all structures and removed all operator implicit and explicit with void *value cause SDL_MapRGB and MapRGBA crashed.
+* Added some SDL_hints define string but not all....
+
 * Updated all structures with fake instance like TerraFX.Interop.Xlib's structures
 * Changed uint to DisplayID and WindowID
 
