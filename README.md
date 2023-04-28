@@ -2,6 +2,7 @@
 SDL3 for C#
 
 # Changes and Fixes:
+* Removed operator implicit and explicit from SDL_Renderer ( Sony I forgot to remove! I will recheck and verify for whole SDL3 if they have updated codes in SDL3. )
 * Fixed all structures and removed all operator implicit and explicit with void *value cause SDL_MapRGB and MapRGBA crashed.
 * Added some SDL_hints define string but not all....
 
