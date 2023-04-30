@@ -4,11 +4,11 @@ SDL3 for C#
 # Changes and Fixes:
 + Added SDL3_ttf in C# ( Sorry take longer for SDL3_ttf )
 * Added SDL_stdinc in C# Trying to resolve if I copy from *.h to *.cs and format and write own. ( Still in process )
-* Replaced SDL_bool to int and some enum SDL_xxxxxxx to uint 
+* Replaced SDL_bool to int and some enum SDL_xxxxxxx to uint ( Still in process )
 * Fixed and replaced to nint like you have tried Marshal.GetDelegateForFunctionPointer<T>() for GL, EGL and Vulkan too
 * Removed operator implicit and explicit from SDL_Renderer ( Sony I forgot to remove! I will recheck and verify for whole SDL3 if they have updated codes in SDL3. )
 * Fixed all structures and removed all operator implicit and explicit with void *value cause SDL_MapRGB and MapRGBA crashed.
-* Added some SDL_hints define string but not all....
+* Added some SDL_hints define string but not all.... ( Still in process )
 
 * Updated all structures with fake instance like TerraFX.Interop.Xlib's structures
 * Changed uint to DisplayID and WindowID
