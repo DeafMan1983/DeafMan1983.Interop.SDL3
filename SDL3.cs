@@ -2129,7 +2129,7 @@ public unsafe static partial class SDL3
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("SDL_FunctionPointer")]
-    public static extern delegate* unmanaged[Cdecl]<void *> SDL_Vulkan_GetVkGetInstanceProcAddr();
+    public static extern nint SDL_Vulkan_GetVkGetInstanceProcAddr();
 
     [DllImport(libSDL3)]
     public static extern void SDL_Vulkan_UnloadLibrary();

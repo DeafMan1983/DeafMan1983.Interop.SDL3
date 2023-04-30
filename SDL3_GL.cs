@@ -78,11 +78,11 @@ public static unsafe partial class SDL3
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("SDL_FunctionPointer")]
-    public static extern delegate* unmanaged[Cdecl]<void *> SDL_GL_GetProcAddress([NativeTypeName("const char *")] sbyte* proc);
+    public static extern nint SDL_GL_GetProcAddress([NativeTypeName("const char *")] sbyte* proc);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("SDL_FunctionPointer")]
-    public static extern delegate* unmanaged[Cdecl]<void *> SDL_EGL_GetProcAddress([NativeTypeName("const char *")] sbyte* proc);
+    public static extern nint SDL_EGL_GetProcAddress([NativeTypeName("const char *")] sbyte* proc);
 
     [DllImport(libSDL3)]
     public static extern void SDL_GL_UnloadLibrary();
