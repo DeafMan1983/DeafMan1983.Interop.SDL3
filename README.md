@@ -1,6 +1,8 @@
 # DeafMan1983.Interop.SDL3
 SDL3 for C#
 
+NEW Nuget Package: [See to nuget-website](https://www.nuget.org/packages/DeafMan1983.Interop.SDL3)
+
 # Changes and Fixes:
 + Added SDL3_ttf in C# ( Sorry take longer for SDL3_ttf )
 * Added SDL_stdinc in C# Trying to resolve if I copy from *.h to *.cs and format and write own. ( Still in process )
