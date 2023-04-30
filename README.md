@@ -26,3 +26,5 @@ But for SDL3 C# has 95 % completed converted by ClangSharpPInvokeGenerator but "
 And I would like to release many new tutorial if you know about SDL3 like in C++/C
 
 Enjoy your game development!
+
+Original GitHub Url: [DeafMan1983.Interop.SDL3](https://github.com/DeafMan1983/DeafMan1983.Interop.SDL3)
