@@ -43,7 +43,7 @@ public unsafe partial struct SDL_RWops
 
         public unsafe partial struct _stdio_e__Struct
         {
-            public SDL_bool autoclose;
+            public int autoclose;
 
             public void* fp;
         }

@@ -88,7 +88,7 @@ public static unsafe partial class SDL3
     public static extern void SDL_GL_UnloadLibrary();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GL_ExtensionSupported([NativeTypeName("const char *")] sbyte* extension);
+    public static extern int SDL_GL_ExtensionSupported([NativeTypeName("const char *")] sbyte* extension);
 
     [DllImport(libSDL3)]
     public static extern void SDL_GL_ResetAttributes();

@@ -29,7 +29,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_ResetAssertionReport();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_AtomicTryLock([NativeTypeName("SDL_SpinLock *")] int* @lock);
+    public static extern int SDL_AtomicTryLock([NativeTypeName("SDL_SpinLock *")] int* @lock);
 
     [DllImport(libSDL3)]
     public static extern void SDL_AtomicLock([NativeTypeName("SDL_SpinLock *")] int* @lock);
@@ -44,7 +44,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_MemoryBarrierAcquireFunction();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_AtomicCAS(SDL_atomic_t* a, int oldval, int newval);
+    public static extern int SDL_AtomicCAS(SDL_atomic_t* a, int oldval, int newval);
 
     [DllImport(libSDL3)]
     public static extern int SDL_AtomicSet(SDL_atomic_t* a, int v);
@@ -56,7 +56,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_AtomicAdd(SDL_atomic_t* a, int v);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_AtomicCASPtr(void** a, void* oldval, void* newval);
+    public static extern int SDL_AtomicCASPtr(void** a, void* oldval, void* newval);
 
     [DllImport(libSDL3)]
     public static extern void* SDL_AtomicSetPtr(void** a, void* v);
@@ -165,7 +165,7 @@ public unsafe static partial class SDL3
     public static extern sbyte* SDL_GetClipboardText();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasClipboardText();
+    public static extern int SDL_HasClipboardText();
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetPrimarySelectionText([NativeTypeName("const char *")] sbyte* text);
@@ -175,7 +175,7 @@ public unsafe static partial class SDL3
     public static extern sbyte* SDL_GetPrimarySelectionText();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasPrimarySelectionText();
+    public static extern int SDL_HasPrimarySelectionText();
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetCPUCount();
@@ -184,49 +184,49 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetCPUCacheLineSize();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasRDTSC();
+    public static extern int SDL_HasRDTSC();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasAltiVec();
+    public static extern int SDL_HasAltiVec();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasMMX();
+    public static extern int SDL_HasMMX();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasSSE();
+    public static extern int SDL_HasSSE();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasSSE2();
+    public static extern int SDL_HasSSE2();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasSSE3();
+    public static extern int SDL_HasSSE3();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasSSE41();
+    public static extern int SDL_HasSSE41();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasSSE42();
+    public static extern int SDL_HasSSE42();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasAVX();
+    public static extern int SDL_HasAVX();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasAVX2();
+    public static extern int SDL_HasAVX2();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasAVX512F();
+    public static extern int SDL_HasAVX512F();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasARMSIMD();
+    public static extern int SDL_HasARMSIMD();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasNEON();
+    public static extern int SDL_HasNEON();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasLSX();
+    public static extern int SDL_HasLSX();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasLASX();
+    public static extern int SDL_HasLASX();
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetSystemRAM();
@@ -259,10 +259,10 @@ public unsafe static partial class SDL3
     public static extern int SDL_PeepEvents(SDL_Event* events, int numevents, SDL_eventaction action, [NativeTypeName("Uint32")] uint minType, [NativeTypeName("Uint32")] uint maxType);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasEvent([NativeTypeName("Uint32")] uint type);
+    public static extern int SDL_HasEvent([NativeTypeName("Uint32")] uint type);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasEvents([NativeTypeName("Uint32")] uint minType, [NativeTypeName("Uint32")] uint maxType);
+    public static extern int SDL_HasEvents([NativeTypeName("Uint32")] uint minType, [NativeTypeName("Uint32")] uint maxType);
 
     [DllImport(libSDL3)]
     public static extern void SDL_FlushEvent([NativeTypeName("Uint32")] uint type);
@@ -286,7 +286,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_SetEventFilter([NativeTypeName("SDL_EventFilter")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int> filter, void* userdata);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetEventFilter([NativeTypeName("SDL_EventFilter *")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int>* filter, void** userdata);
+    public static extern int SDL_GetEventFilter([NativeTypeName("SDL_EventFilter *")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int>* filter, void** userdata);
 
     [DllImport(libSDL3)]
     public static extern void SDL_AddEventWatch([NativeTypeName("SDL_EventFilter")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int> filter, void* userdata);
@@ -298,10 +298,10 @@ public unsafe static partial class SDL3
     public static extern void SDL_FilterEvents([NativeTypeName("SDL_EventFilter")] delegate* unmanaged[Cdecl]<void*, SDL_Event*, int> filter, void* userdata);
 
     [DllImport(libSDL3)]
-    public static extern void SDL_SetEventEnabled([NativeTypeName("Uint32")] uint type, SDL_bool enabled);
+    public static extern void SDL_SetEventEnabled([NativeTypeName("Uint32")] uint type, int enabled);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_EventEnabled([NativeTypeName("Uint32")] uint type);
+    public static extern int SDL_EventEnabled([NativeTypeName("Uint32")] uint type);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("Uint32")]
@@ -341,7 +341,7 @@ public unsafe static partial class SDL3
     public static extern uint* SDL_GetGamepads(int* count);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_IsGamepad([NativeTypeName("SDL_JoystickID")] uint instance_id);
+    public static extern int SDL_IsGamepad([NativeTypeName("SDL_JoystickID")] uint instance_id);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("const char *")]
@@ -424,16 +424,16 @@ public unsafe static partial class SDL3
     public static extern sbyte* SDL_GetGamepadSerial(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadConnected(SDL_Gamepad* gamepad);
+    public static extern int SDL_GamepadConnected(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
     public static extern SDL_Joystick* SDL_GetGamepadJoystick(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
-    public static extern void SDL_SetGamepadEventsEnabled(SDL_bool enabled);
+    public static extern void SDL_SetGamepadEventsEnabled(int enabled);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadEventsEnabled();
+    public static extern int SDL_GamepadEventsEnabled();
 
     [DllImport(libSDL3)]
     public static extern void SDL_UpdateGamepads();
@@ -449,7 +449,7 @@ public unsafe static partial class SDL3
     public static extern SDL_GamepadBinding SDL_GetGamepadBindForAxis(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasAxis(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
+    public static extern int SDL_GamepadHasAxis(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("Sint16")]
@@ -466,7 +466,7 @@ public unsafe static partial class SDL3
     public static extern SDL_GamepadBinding SDL_GetGamepadBindForButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
+    public static extern int SDL_GamepadHasButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("Uint8")]
@@ -482,13 +482,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, [NativeTypeName("Uint8 *")] byte* state, float* x, float* y, float* pressure);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasSensor(SDL_Gamepad* gamepad, SDL_SensorType type);
+    public static extern int SDL_GamepadHasSensor(SDL_Gamepad* gamepad, SDL_SensorType type);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, SDL_bool enabled);
+    public static extern int SDL_SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, int enabled);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type);
+    public static extern int SDL_GamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type);
 
     [DllImport(libSDL3)]
     public static extern float SDL_GetGamepadSensorDataRate(SDL_Gamepad* gamepad, SDL_SensorType type);
@@ -503,13 +503,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_RumbleGamepadTriggers(SDL_Gamepad* gamepad, [NativeTypeName("Uint16")] ushort left_rumble, [NativeTypeName("Uint16")] ushort right_rumble, [NativeTypeName("Uint32")] uint duration_ms);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasLED(SDL_Gamepad* gamepad);
+    public static extern int SDL_GamepadHasLED(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasRumble(SDL_Gamepad* gamepad);
+    public static extern int SDL_GamepadHasRumble(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GamepadHasRumbleTriggers(SDL_Gamepad* gamepad);
+    public static extern int SDL_GamepadHasRumbleTriggers(SDL_Gamepad* gamepad);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetGamepadLED(SDL_Gamepad* gamepad, [NativeTypeName("Uint8")] byte red, [NativeTypeName("Uint8")] byte green, [NativeTypeName("Uint8")] byte blue);
@@ -678,7 +678,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_hid_get_indexed_string([NativeTypeName("SDL_hid_device *")] SDL_hid_device_* dev, int string_index, [NativeTypeName("wchar_t *")] uint* @string, [NativeTypeName("size_t")] nuint maxlen);
 
     [DllImport(libSDL3)]
-    public static extern void SDL_hid_ble_scan(SDL_bool active);
+    public static extern void SDL_hid_ble_scan(int active);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GUIDToString(SDL_GUID guid, [NativeTypeName("char *")] sbyte* pszGUID, int cbGUID);
@@ -687,13 +687,13 @@ public unsafe static partial class SDL3
     public static extern SDL_GUID SDL_GUIDFromString([NativeTypeName("const char *")] sbyte* pchGUID);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_SetHintWithPriority([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("const char *")] sbyte* value, SDL_HintPriority priority);
+    public static extern int SDL_SetHintWithPriority([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("const char *")] sbyte* value, SDL_HintPriority priority);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_SetHint([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("const char *")] sbyte* value);
+    public static extern int SDL_SetHint([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("const char *")] sbyte* value);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_ResetHint([NativeTypeName("const char *")] sbyte* name);
+    public static extern int SDL_ResetHint([NativeTypeName("const char *")] sbyte* name);
 
     [DllImport(libSDL3)]
     public static extern void SDL_ResetHints();
@@ -703,7 +703,7 @@ public unsafe static partial class SDL3
     public static extern sbyte* SDL_GetHint([NativeTypeName("const char *")] sbyte* name);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetHintBoolean([NativeTypeName("const char *")] sbyte* name, SDL_bool default_value);
+    public static extern int SDL_GetHintBoolean([NativeTypeName("const char *")] sbyte* name, int default_value);
 
     [DllImport(libSDL3)]
     public static extern int SDL_AddHintCallback([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("SDL_HintCallback")] delegate* unmanaged[Cdecl]<void*, sbyte*, sbyte*, sbyte*, void> callback, void* userdata);
@@ -790,7 +790,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_DetachVirtualJoystick([NativeTypeName("SDL_JoystickID")] uint instance_id);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_IsJoystickVirtual([NativeTypeName("SDL_JoystickID")] uint instance_id);
+    public static extern int SDL_IsJoystickVirtual([NativeTypeName("SDL_JoystickID")] uint instance_id);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetJoystickVirtualAxis(SDL_Joystick* joystick, int axis, [NativeTypeName("Sint16")] short value);
@@ -853,7 +853,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_GetJoystickGUIDInfo([NativeTypeName("SDL_JoystickGUID")] SDL_GUID guid, [NativeTypeName("Uint16 *")] ushort* vendor, [NativeTypeName("Uint16 *")] ushort* product, [NativeTypeName("Uint16 *")] ushort* version, [NativeTypeName("Uint16 *")] ushort* crc16);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_JoystickConnected(SDL_Joystick* joystick);
+    public static extern int SDL_JoystickConnected(SDL_Joystick* joystick);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("SDL_JoystickID")]
@@ -869,10 +869,10 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetNumJoystickButtons(SDL_Joystick* joystick);
 
     [DllImport(libSDL3)]
-    public static extern void SDL_SetJoystickEventsEnabled(SDL_bool enabled);
+    public static extern void SDL_SetJoystickEventsEnabled(int enabled);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_JoystickEventsEnabled();
+    public static extern int SDL_JoystickEventsEnabled();
 
     [DllImport(libSDL3)]
     public static extern void SDL_UpdateJoysticks();
@@ -882,7 +882,7 @@ public unsafe static partial class SDL3
     public static extern short SDL_GetJoystickAxis(SDL_Joystick* joystick, int axis);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, [NativeTypeName("Sint16 *")] short* state);
+    public static extern int SDL_GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, [NativeTypeName("Sint16 *")] short* state);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("Uint8")]
@@ -899,13 +899,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_RumbleJoystickTriggers(SDL_Joystick* joystick, [NativeTypeName("Uint16")] ushort left_rumble, [NativeTypeName("Uint16")] ushort right_rumble, [NativeTypeName("Uint32")] uint duration_ms);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_JoystickHasLED(SDL_Joystick* joystick);
+    public static extern int SDL_JoystickHasLED(SDL_Joystick* joystick);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_JoystickHasRumble(SDL_Joystick* joystick);
+    public static extern int SDL_JoystickHasRumble(SDL_Joystick* joystick);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_JoystickHasRumbleTriggers(SDL_Joystick* joystick);
+    public static extern int SDL_JoystickHasRumbleTriggers(SDL_Joystick* joystick);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetJoystickLED(SDL_Joystick* joystick, [NativeTypeName("Uint8")] byte red, [NativeTypeName("Uint8")] byte green, [NativeTypeName("Uint8")] byte blue);
@@ -961,7 +961,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_StartTextInput();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_TextInputActive();
+    public static extern int SDL_TextInputActive();
 
     [DllImport(libSDL3)]
     public static extern void SDL_StopTextInput();
@@ -970,16 +970,16 @@ public unsafe static partial class SDL3
     public static extern void SDL_ClearComposition();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_TextInputShown();
+    public static extern int SDL_TextInputShown();
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetTextInputRect([NativeTypeName("const SDL_Rect *")] SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasScreenKeyboardSupport();
+    public static extern int SDL_HasScreenKeyboardSupport();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_ScreenKeyboardShown(SDL_Window* window);
+    public static extern int SDL_ScreenKeyboardShown(SDL_Window* window);
 
     [DllImport(libSDL3)]
     public static extern void* SDL_LoadObject([NativeTypeName("const char *")] sbyte* sofile);
@@ -1089,13 +1089,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_WarpMouseGlobal(float x, float y);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetRelativeMouseMode(SDL_bool enabled);
+    public static extern int SDL_SetRelativeMouseMode(int enabled);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_CaptureMouse(SDL_bool enabled);
+    public static extern int SDL_CaptureMouse(int enabled);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRelativeMouseMode();
+    public static extern int SDL_GetRelativeMouseMode();
 
     [DllImport(libSDL3)]
     public static extern SDL_Cursor* SDL_CreateCursor([NativeTypeName("const Uint8 *")] byte* data, [NativeTypeName("const Uint8 *")] byte* mask, int w, int h, int hot_x, int hot_y);
@@ -1125,7 +1125,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_HideCursor();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_CursorVisible();
+    public static extern int SDL_CursorVisible();
 
     [DllImport(libSDL3)]
     public static extern SDL_mutex* SDL_CreateMutex();
@@ -1188,7 +1188,7 @@ public unsafe static partial class SDL3
     public static extern sbyte* SDL_GetPixelFormatName([NativeTypeName("Uint32")] uint format);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetMasksForPixelFormatEnum([NativeTypeName("Uint32")] uint format, int* bpp, [NativeTypeName("Uint32 *")] uint* Rmask, [NativeTypeName("Uint32 *")] uint* Gmask, [NativeTypeName("Uint32 *")] uint* Bmask, [NativeTypeName("Uint32 *")] uint* Amask);
+    public static extern int SDL_GetMasksForPixelFormatEnum([NativeTypeName("Uint32")] uint format, int* bpp, [NativeTypeName("Uint32 *")] uint* Rmask, [NativeTypeName("Uint32 *")] uint* Gmask, [NativeTypeName("Uint32 *")] uint* Bmask, [NativeTypeName("Uint32 *")] uint* Amask);
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("Uint32")]
@@ -1234,34 +1234,34 @@ public unsafe static partial class SDL3
     public static extern SDL_PowerState SDL_GetPowerInfo(int* seconds, int* percent);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasRectIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* A, [NativeTypeName("const SDL_Rect *")] SDL_Rect* B);
+    public static extern int SDL_HasRectIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* A, [NativeTypeName("const SDL_Rect *")] SDL_Rect* B);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* A, [NativeTypeName("const SDL_Rect *")] SDL_Rect* B, SDL_Rect* result);
+    public static extern int SDL_GetRectIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* A, [NativeTypeName("const SDL_Rect *")] SDL_Rect* B, SDL_Rect* result);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetRectUnion([NativeTypeName("const SDL_Rect *")] SDL_Rect* A, [NativeTypeName("const SDL_Rect *")] SDL_Rect* B, SDL_Rect* result);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectEnclosingPoints([NativeTypeName("const SDL_Point *")] SDL_Point* points, int count, [NativeTypeName("const SDL_Rect *")] SDL_Rect* clip, SDL_Rect* result);
+    public static extern int SDL_GetRectEnclosingPoints([NativeTypeName("const SDL_Point *")] SDL_Point* points, int count, [NativeTypeName("const SDL_Rect *")] SDL_Rect* clip, SDL_Rect* result);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectAndLineIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* rect, int* X1, int* Y1, int* X2, int* Y2);
+    public static extern int SDL_GetRectAndLineIntersection([NativeTypeName("const SDL_Rect *")] SDL_Rect* rect, int* X1, int* Y1, int* X2, int* Y2);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_HasRectIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* A, [NativeTypeName("const SDL_FRect *")] SDL_FRect* B);
+    public static extern int SDL_HasRectIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* A, [NativeTypeName("const SDL_FRect *")] SDL_FRect* B);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* A, [NativeTypeName("const SDL_FRect *")] SDL_FRect* B, SDL_FRect* result);
+    public static extern int SDL_GetRectIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* A, [NativeTypeName("const SDL_FRect *")] SDL_FRect* B, SDL_FRect* result);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetRectUnionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* A, [NativeTypeName("const SDL_FRect *")] SDL_FRect* B, SDL_FRect* result);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectEnclosingPointsFloat([NativeTypeName("const SDL_FPoint *")] SDL_FPoint* points, int count, [NativeTypeName("const SDL_FRect *")] SDL_FRect* clip, SDL_FRect* result);
+    public static extern int SDL_GetRectEnclosingPointsFloat([NativeTypeName("const SDL_FPoint *")] SDL_FPoint* points, int count, [NativeTypeName("const SDL_FRect *")] SDL_FRect* clip, SDL_FRect* result);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetRectAndLineIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* rect, float* X1, float* Y1, float* X2, float* Y2);
+    public static extern int SDL_GetRectAndLineIntersectionFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* rect, float* X1, float* Y1, float* X2, float* Y2);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetNumRenderDrivers();
@@ -1388,7 +1388,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetRenderClipRect(SDL_Renderer* renderer, SDL_Rect* rect);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_RenderClipEnabled(SDL_Renderer* renderer);
+    public static extern int SDL_RenderClipEnabled(SDL_Renderer* renderer);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetRenderScale(SDL_Renderer* renderer, float scaleX, float scaleY);
@@ -1629,7 +1629,7 @@ public unsafe static partial class SDL3
     public static extern SDL_Window* SDL_CreateShapedWindow([NativeTypeName("const char *")] sbyte* title, [NativeTypeName("unsigned int")] uint x, [NativeTypeName("unsigned int")] uint y, [NativeTypeName("unsigned int")] uint w, [NativeTypeName("unsigned int")] uint h, [NativeTypeName("Uint32")] uint flags);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_IsShapedWindow([NativeTypeName("const SDL_Window *")] SDL_Window* window);
+    public static extern int SDL_IsShapedWindow([NativeTypeName("const SDL_Window *")] SDL_Window* window);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetWindowShape(SDL_Window* window, SDL_Surface* shape, SDL_WindowShapeMode* shape_mode);
@@ -1666,13 +1666,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_SetSurfaceRLE(SDL_Surface* surface, int flag);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_SurfaceHasRLE(SDL_Surface* surface);
+    public static extern int SDL_SurfaceHasRLE(SDL_Surface* surface);
 
     [DllImport(libSDL3)]
     public static extern int SDL_SetSurfaceColorKey(SDL_Surface* surface, int flag, [NativeTypeName("Uint32")] uint key);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_SurfaceHasColorKey(SDL_Surface* surface);
+    public static extern int SDL_SurfaceHasColorKey(SDL_Surface* surface);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetSurfaceColorKey(SDL_Surface* surface, [NativeTypeName("Uint32 *")] uint* key);
@@ -1696,7 +1696,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode* blendMode);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_SetSurfaceClipRect(SDL_Surface* surface, [NativeTypeName("const SDL_Rect *")] SDL_Rect* rect);
+    public static extern int SDL_SetSurfaceClipRect(SDL_Surface* surface, [NativeTypeName("const SDL_Rect *")] SDL_Rect* rect);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect);
@@ -1757,7 +1757,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_LinuxSetThreadPriorityAndPolicy([NativeTypeName("Sint64")] nint threadID, int sdlPriority, int schedPolicy);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_IsTablet();
+    public static extern int SDL_IsTablet();
 
     [DllImport(libSDL3)]
     public static extern void SDL_OnApplicationWillTerminate();
@@ -1850,7 +1850,7 @@ public unsafe static partial class SDL3
     public static extern SDL_TimerID SDL_AddTimer([NativeTypeName("Uint32")] uint interval, [NativeTypeName("SDL_TimerCallback")] delegate* unmanaged[Cdecl]<uint, void*, uint> callback, void* param2);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_RemoveTimer([NativeTypeName("SDL_TimerID")] SDL_TimerID id);
+    public static extern int SDL_RemoveTimer([NativeTypeName("SDL_TimerID")] SDL_TimerID id);
 
     [DllImport(libSDL3)]
     public static extern int SDL_GetNumTouchDevices(); // WARNING It is for for statement
@@ -2017,13 +2017,13 @@ public unsafe static partial class SDL3
     public static extern int SDL_GetWindowMaximumSize(SDL_Window* window, int* w, int* h);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowBordered(SDL_Window* window, SDL_bool bordered);
+    public static extern int SDL_SetWindowBordered(SDL_Window* window, int bordered);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowResizable(SDL_Window* window, SDL_bool resizable);
+    public static extern int SDL_SetWindowResizable(SDL_Window* window, int resizable);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowAlwaysOnTop(SDL_Window* window, SDL_bool on_top);
+    public static extern int SDL_SetWindowAlwaysOnTop(SDL_Window* window, int on_top);
 
     [DllImport(libSDL3)]
     public static extern int SDL_ShowWindow(SDL_Window* window);
@@ -2044,7 +2044,7 @@ public unsafe static partial class SDL3
     public static extern int SDL_RestoreWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowFullscreen(SDL_Window* window, SDL_bool fullscreen);
+    public static extern int SDL_SetWindowFullscreen(SDL_Window* window, int fullscreen);
 
     [DllImport(libSDL3)]
     public static extern SDL_Surface* SDL_GetWindowSurface(SDL_Window* window);
@@ -2056,22 +2056,22 @@ public unsafe static partial class SDL3
     public static extern int SDL_UpdateWindowSurfaceRects(SDL_Window* window, [NativeTypeName("const SDL_Rect *")] SDL_Rect* rects, int numrects);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowGrab(SDL_Window* window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowGrab(SDL_Window* window, int grabbed);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowKeyboardGrab(SDL_Window* window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowKeyboardGrab(SDL_Window* window, int grabbed);
 
     [DllImport(libSDL3)]
-    public static extern int SDL_SetWindowMouseGrab(SDL_Window* window, SDL_bool grabbed);
+    public static extern int SDL_SetWindowMouseGrab(SDL_Window* window, int grabbed);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowGrab(SDL_Window* window);
+    public static extern int SDL_GetWindowGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowKeyboardGrab(SDL_Window* window);
+    public static extern int SDL_GetWindowKeyboardGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_GetWindowMouseGrab(SDL_Window* window);
+    public static extern int SDL_GetWindowMouseGrab(SDL_Window* window);
 
     [DllImport(libSDL3)]
     public static extern SDL_Window* SDL_GetGrabbedWindow();
@@ -2105,7 +2105,7 @@ public unsafe static partial class SDL3
     public static extern void SDL_DestroyWindow(SDL_Window* window);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_ScreenSaverEnabled();
+    public static extern int SDL_ScreenSaverEnabled();
 
     [DllImport(libSDL3)]
     public static extern int SDL_EnableScreenSaver();
@@ -2135,10 +2135,10 @@ public unsafe static partial class SDL3
     public static extern void SDL_Vulkan_UnloadLibrary();
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_Vulkan_GetInstanceExtensions([NativeTypeName("unsigned int *")] uint* pCount, [NativeTypeName("const char **")] sbyte** pNames);
+    public static extern int SDL_Vulkan_GetInstanceExtensions([NativeTypeName("unsigned int *")] uint* pCount, [NativeTypeName("const char **")] sbyte** pNames);
 
     [DllImport(libSDL3)]
-    public static extern SDL_bool SDL_Vulkan_CreateSurface(SDL_Window* window, [NativeTypeName("VkInstance")] void* instance, [NativeTypeName("VkSurfaceKHR *")] void* surface);
+    public static extern int SDL_Vulkan_CreateSurface(SDL_Window* window, [NativeTypeName("VkInstance")] void* instance, [NativeTypeName("VkSurfaceKHR *")] void* surface);
 
 
     /**
@@ -2155,7 +2155,7 @@ public unsafe static partial class SDL3
         return 31 - __builtin_clz(x);
     }
 
-    public static SDL_bool SDL_HasExactlyOneBitSet32([NativeTypeName("Uint32")] uint x)
+    public static int SDL_HasExactlyOneBitSet32([NativeTypeName("Uint32")] uint x)
     {
         if ((x) != 0 && (x & (x - 1)) == 0)
         {
@@ -2168,37 +2168,37 @@ public unsafe static partial class SDL3
     [DllImport(libSDL3)]
     public static extern int __builtin_clz([NativeTypeName("unsigned int")] uint param0);
 
-    public static SDL_bool SDL_PointInRect([NativeTypeName("const SDL_Point *")] SDL_Point* p, [NativeTypeName("const SDL_Rect *")] SDL_Rect* r)
+    public static int SDL_PointInRect([NativeTypeName("const SDL_Point *")] SDL_Point* p, [NativeTypeName("const SDL_Rect *")] SDL_Rect* r)
     {
         return ((p->x >= r->x) && (p->x < (r->x + r->w)) && (p->y >= r->y) && (p->y < (r->y + r->h))) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_RectEmpty([NativeTypeName("const SDL_Rect *")] SDL_Rect* r)
+    public static int SDL_RectEmpty([NativeTypeName("const SDL_Rect *")] SDL_Rect* r)
     {
         return ((r == null) || (r->w <= 0) || (r->h <= 0)) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_RectsEqual([NativeTypeName("const SDL_Rect *")] SDL_Rect* a, [NativeTypeName("const SDL_Rect *")] SDL_Rect* b)
+    public static int SDL_RectsEqual([NativeTypeName("const SDL_Rect *")] SDL_Rect* a, [NativeTypeName("const SDL_Rect *")] SDL_Rect* b)
     {
         return ((a) != null && (b) != null && (a->x == b->x) && (a->y == b->y) && (a->w == b->w) && (a->h == b->h)) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_PointInRectFloat([NativeTypeName("const SDL_FPoint *")] SDL_FPoint* p, [NativeTypeName("const SDL_FRect *")] SDL_FRect* r)
+    public static int SDL_PointInRectFloat([NativeTypeName("const SDL_FPoint *")] SDL_FPoint* p, [NativeTypeName("const SDL_FRect *")] SDL_FRect* r)
     {
         return ((p->x >= r->x) && (p->x < (r->x + r->w)) && (p->y >= r->y) && (p->y < (r->y + r->h))) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_RectEmptyFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* r)
+    public static int SDL_RectEmptyFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* r)
     {
         return ((r == null) || (r->w <= 0.0f) || (r->h <= 0.0f)) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_RectsEqualEpsilon([NativeTypeName("const SDL_FRect *")] SDL_FRect* a, [NativeTypeName("const SDL_FRect *")] SDL_FRect* b, [NativeTypeName("const float")] float epsilon)
+    public static int SDL_RectsEqualEpsilon([NativeTypeName("const SDL_FRect *")] SDL_FRect* a, [NativeTypeName("const SDL_FRect *")] SDL_FRect* b, [NativeTypeName("const float")] float epsilon)
     {
         return ((a) != null && (b) != null && ((a == b) || ((MathF.Abs(a->x - b->x) <= epsilon) && (MathF.Abs(a->y - b->y) <= epsilon) && (MathF.Abs(a->w - b->w) <= epsilon) && (MathF.Abs(a->h - b->h) <= epsilon)))) ? SDL_TRUE : SDL_FALSE;
     }
 
-    public static SDL_bool SDL_RectsEqualFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* a, [NativeTypeName("const SDL_FRect *")] SDL_FRect* b)
+    public static int SDL_RectsEqualFloat([NativeTypeName("const SDL_FRect *")] SDL_FRect* a, [NativeTypeName("const SDL_FRect *")] SDL_FRect* b)
     {
         return SDL_RectsEqualEpsilon(a, b, 1.1920928955078125e-07F);
     }
@@ -3361,11 +3361,6 @@ public unsafe static partial class SDL3
         SDL_THREAD_PRIORITY_HIGH,
         SDL_THREAD_PRIORITY_TIME_CRITICAL;
     
-    public enum SDL_bool : int {}
-    public const SDL_bool SDL_FALSE = (SDL_bool)0,
-                          SDL_TRUE = (SDL_bool)1;
-
-
     public enum SDL_TouchID : Int64 {}
     public enum SDL_FingerID : Int64 {}
 
@@ -3506,4 +3501,13 @@ public unsafe static partial class SDL3
                         
                         
                         SDL_HINT_RENDER_DRIVER = "SDL_RENDER_DRIVER";
+
+
+
+
+
+    public const byte SDL_BUTTON_LEFT = 1,
+                      SDL_BUTTON_MIDDLE = 2,
+                      SDL_BUTTON_RIGHT = 3;
+                      
 }
