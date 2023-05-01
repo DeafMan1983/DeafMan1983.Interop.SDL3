@@ -986,7 +986,7 @@ public unsafe static partial class SDL3
 
     [DllImport(libSDL3)]
     [return: NativeTypeName("SDL_FunctionPointer")]
-    public static extern delegate* unmanaged[Cdecl]<void> SDL_LoadFunction(void* handle, [NativeTypeName("const char *")] sbyte* name);
+    public static extern nint SDL_LoadFunction(void* handle, [NativeTypeName("const char *")] sbyte* name);
 
     [DllImport(libSDL3)]
     public static extern void SDL_UnloadObject(void* handle);
