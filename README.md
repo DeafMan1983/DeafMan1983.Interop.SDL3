@@ -1,6 +1,11 @@
 # DeafMan1983.Interop.SDL3
 SDL3 for C#
 
+Edit: if SDL3 is complete release version then I will update libraries,okay?
+
+Please be patient! if you use SDL2 then you can install by dotnet 
+`dotnet add package DeafMan1983.Interop.SDL2`
+
 NEW Nuget Package: [See to nuget-website](https://www.nuget.org/packages/DeafMan1983.Interop.SDL3)
 
 # Changes and Fixes:
